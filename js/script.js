@@ -22,6 +22,7 @@ const colors = [
 ];
 
 let currentColor = colors[0];
+let size = 80;
 let gradients = [];
 let undoStack = [];
 let redoStack = [];
@@ -49,20 +50,25 @@ colors.forEach((color, index) => {
   colorPicker.appendChild(button);
 });
 
+const sizeDropdown = document.getElementById('size');
+sizeDropdown.addEventListener('change', function () {
+  size = this.value;
+});
+
 const canvas = document.getElementById('canvas');
 
 canvas.addEventListener('click', function (e) {
   const rect = canvas.getBoundingClientRect();
   const x = Math.round((e.clientX - rect.left) / rect.width * 100);
   const y = Math.round((e.clientY - rect.top) / rect.height * 100);
-  addGradient(x, y, currentColor);
+  addGradient(x, y, currentColor, size);
 });
 
 canvas.addEventListener('mousemove', function (e) {
   const rect = canvas.getBoundingClientRect();
   const x = Math.round((e.clientX - rect.left) / rect.width * 100);
   const y = Math.round((e.clientY - rect.top) / rect.height * 100);
-  const size = 80; // Fixed size for simplicity
+  
   previewGradient = `radial-gradient(circle at ${x}% ${y}%, ${currentColor}, transparent ${size}%)`;
   canvas.style.backgroundImage = [...gradients, previewGradient].join(', ');
 });
@@ -75,8 +81,7 @@ document.getElementById('undo').addEventListener('click', undoLast);
 document.getElementById('redo').addEventListener('click', redoLast);
 document.getElementById('reset').addEventListener('click', resetCanvas);
 
-function addGradient(x, y, color) {
-  const size = 80; // Fixed size for simplicity
+function addGradient(x, y, color, size) {
   const gradient = `radial-gradient(circle at ${x}% ${y}%, ${color}, transparent ${size}%)`;
   undoStack.push(gradient);
   updateCanvas();
