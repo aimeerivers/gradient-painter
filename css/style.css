@@ -1,0 +1,24 @@
+/* style.css */
+#canvas {
+  width: 600px;
+  height: 400px;
+  border: 1px solid #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.colorBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+#cssOutput {
+  white-space: pre-wrap;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
