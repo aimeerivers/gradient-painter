@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  <h1>Gradient Painter</h1>
+  <p>Pick a colour and start painting!</p>
   <div id="colorPicker">
     <button class="colorBtn" style="background-color: red;" data-color="red"></button>
     <button class="colorBtn" style="background-color: blue;" data-color="blue"></button>
@@ -16,7 +18,11 @@
     <!-- Add more colors as needed -->
   </div>
   <div id="canvas"></div>
-  <button id="undo">Undo</button>
+  <div class="buttons">
+    <button id="undo">Undo</button>
+    <button id="redo">Redo</button>
+  </div>
+  <h2>CSS</h2>
   <pre id="cssOutput"></pre>
   <script src="js/script.js"></script>
 </body>

@@ -1,7 +1,8 @@
 // script.js
 let currentColor = 'red';
 let gradients = [];
-let undoHistory = [];
+let undoStack = [];
+let redoStack = [];
 
 document.querySelectorAll('.colorBtn').forEach(btn => {
   btn.addEventListener('click', function () {
@@ -18,22 +19,35 @@ canvas.addEventListener('click', function (e) {
 });
 
 document.getElementById('undo').addEventListener('click', undoLast);
+document.getElementById('redo').addEventListener('click', redoLast);
 
 function addGradient(x, y, color) {
   const size = 80; // Fixed size for simplicity
   const gradient = `radial-gradient(circle at ${x}% ${y}%, ${color}, transparent ${size}%)`;
-  gradients.push(gradient);
+  undoStack.push(gradient);
   updateCanvas();
 }
 
 function updateCanvas() {
+  gradients = [...undoStack];
   canvas.style.backgroundImage = gradients.join(', ');
   updateCSSOutput();
 }
 
 function undoLast() {
-  gradients.pop(); // Remove the last gradient
-  updateCanvas();
+  if (undoStack.length > 0) {
+    const lastGradient = undoStack.pop(); // Remove the last gradient
+    redoStack.push(lastGradient);
+    updateCanvas();
+  }
+}
+
+function redoLast() {
+  if (redoStack.length > 0) {
+    const lastGradient = redoStack.pop(); // Remove the last gradient
+    undoStack.push(lastGradient);
+    updateCanvas();
+  }
 }
 
 function updateCSSOutput() {

@@ -7,6 +7,10 @@
   overflow: hidden;
 }
 
+.buttons {
+  margin: 10px;
+}
+
 .colorBtn {
   width: 40px;
   height: 40px;
