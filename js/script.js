@@ -37,8 +37,11 @@ function undoLast() {
 }
 
 function updateCSSOutput() {
+  if (gradients.length === 0) {
+    return;
+  }
   const cssOutput = document.getElementById('cssOutput');
-  cssOutput.textContent = `background-image: ${gradients.join(', ')};`;
+  cssOutput.textContent = `#canvas {\n  background-image:\n    ${gradients.join(",\n    ")}\n};`;
 }
 
 // Initialize with default color
