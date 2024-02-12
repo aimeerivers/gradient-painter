@@ -1,5 +1,5 @@
 // script.js
-let currentColor = 'red';
+let currentColor = '#FF0000';
 let gradients = [];
 let undoStack = [];
 let redoStack = [];
