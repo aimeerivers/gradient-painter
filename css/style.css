@@ -25,6 +25,11 @@ body {
   border: 1px solid #bbb;
 }
 
+.colorBtn.active, .colorBtn:hover {
+  border: 1px solid #222;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
 #cssOutput {
   white-space: pre-wrap;
   background-color: #f0f0f0;

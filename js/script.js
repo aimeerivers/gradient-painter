@@ -28,13 +28,21 @@ let redoStack = [];
 
 const colorPicker = document.getElementById('colorPicker');
 
-colors.forEach(color => {
+colors.forEach((color, index) => {
   const button = document.createElement('button');
   button.className = 'colorBtn';
   button.style.backgroundColor = color;
+  if (index === 0) {
+    button.classList.add('active');
+  }
   button.setAttribute('data-color', color);
   button.addEventListener('click', function () {
     currentColor = this.getAttribute('data-color');
+    const activeButton = document.querySelector('.colorBtn.active');
+    if (activeButton) {
+      activeButton.classList.remove('active');
+    }
+    this.classList.add('active');
   });
   colorPicker.appendChild(button);
 });
