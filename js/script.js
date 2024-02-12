@@ -1,13 +1,42 @@
-// script.js
-let currentColor = '#FF0000';
+const colors = [
+  "#87CEEB",
+  "#FFFACD",
+  "#FFF0F5",
+  "#F5FFFA",
+  "#FF7F50",
+  "#40E0D0",
+  "#9DC183",
+  "#D896FF",
+  "#F5F5DC",
+  "#708090",
+  "#EA7E5D",
+  "#1560BD",
+  "#708238",
+  "#FFDB58",
+  "#008080",
+  "#CB4154",
+  "#36454F",
+  "#FFE5B4",
+  "#4B0082",
+  "#228B22"
+];
+
+let currentColor = colors[0];
 let gradients = [];
 let undoStack = [];
 let redoStack = [];
 
-document.querySelectorAll('.colorBtn').forEach(btn => {
-  btn.addEventListener('click', function () {
+const colorPicker = document.getElementById('colorPicker');
+
+colors.forEach(color => {
+  const button = document.createElement('button');
+  button.className = 'colorBtn';
+  button.style.backgroundColor = color;
+  button.setAttribute('data-color', color);
+  button.addEventListener('click', function () {
     currentColor = this.getAttribute('data-color');
   });
+  colorPicker.appendChild(button);
 });
 
 const canvas = document.getElementById('canvas');
