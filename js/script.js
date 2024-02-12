@@ -20,8 +20,8 @@ canvas.addEventListener('click', function (e) {
 document.getElementById('undo').addEventListener('click', undoLast);
 
 function addGradient(x, y, color) {
-  const size = 100; // Fixed size for simplicity
-  const gradient = `radial-gradient(circle at ${x}px ${y}px, ${color}, transparent)`;
+  const size = 80; // Fixed size for simplicity
+  const gradient = `radial-gradient(circle at ${x}% ${y}%, ${color}, transparent ${size}%)`;
   gradients.push(gradient);
   updateCanvas();
 }
