@@ -26,6 +26,8 @@ let gradients = [];
 let undoStack = [];
 let redoStack = [];
 
+let previewGradient = '';
+
 const colorPicker = document.getElementById('colorPicker');
 
 colors.forEach((color, index) => {
@@ -48,11 +50,25 @@ colors.forEach((color, index) => {
 });
 
 const canvas = document.getElementById('canvas');
+
 canvas.addEventListener('click', function (e) {
   const rect = canvas.getBoundingClientRect();
   const x = Math.round((e.clientX - rect.left) / rect.width * 100);
   const y = Math.round((e.clientY - rect.top) / rect.height * 100);
   addGradient(x, y, currentColor);
+});
+
+canvas.addEventListener('mousemove', function (e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = Math.round((e.clientX - rect.left) / rect.width * 100);
+  const y = Math.round((e.clientY - rect.top) / rect.height * 100);
+  const size = 80; // Fixed size for simplicity
+  previewGradient = `radial-gradient(circle at ${x}% ${y}%, ${currentColor}, transparent ${size}%)`;
+  canvas.style.backgroundImage = [...gradients, previewGradient].join(', ');
+});
+
+canvas.addEventListener('mouseout', function () {
+  canvas.style.backgroundImage = gradients.join(', ');
 });
 
 document.getElementById('undo').addEventListener('click', undoLast);
