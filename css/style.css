@@ -43,8 +43,3 @@ body {
 button#reset {
   margin-left: 30px;
 }
-
-footer {
-  position: absolute;
-  bottom: 0;
-}
