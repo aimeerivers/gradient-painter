@@ -12,8 +12,8 @@ document.querySelectorAll('.colorBtn').forEach(btn => {
 const canvas = document.getElementById('canvas');
 canvas.addEventListener('click', function (e) {
   const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  const x = Math.round((e.clientX - rect.left) / rect.width * 100);
+  const y = Math.round((e.clientY - rect.top) / rect.height * 100);
   addGradient(x, y, currentColor);
 });
 
