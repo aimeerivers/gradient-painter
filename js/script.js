@@ -20,6 +20,7 @@ canvas.addEventListener('click', function (e) {
 
 document.getElementById('undo').addEventListener('click', undoLast);
 document.getElementById('redo').addEventListener('click', redoLast);
+document.getElementById('reset').addEventListener('click', resetCanvas);
 
 function addGradient(x, y, color) {
   const size = 80; // Fixed size for simplicity
@@ -50,12 +51,20 @@ function redoLast() {
   }
 }
 
+function resetCanvas() {
+  gradients = [];
+  undoStack = [];
+  redoStack = [];
+  updateCanvas();
+}
+
 function updateCSSOutput() {
-  if (gradients.length === 0) {
-    return;
-  }
   const cssOutput = document.getElementById('cssOutput');
-  cssOutput.textContent = `#canvas {\n  background-image:\n    ${gradients.join(",\n    ")}\n};`;
+  if (gradients.length === 0) {
+    cssOutput.textContent = "";
+  } else {
+    cssOutput.textContent = `#canvas {\n  background-image:\n    ${gradients.join(",\n    ")};\n}`;
+  }
 }
 
 // Initialize with default color

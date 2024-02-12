@@ -1,4 +1,7 @@
-/* style.css */
+body {
+  padding: 10px;
+}
+
 #canvas {
   width: 600px;
   height: 400px;
@@ -7,8 +10,9 @@
   overflow: hidden;
 }
 
-.buttons {
-  margin: 10px;
+.buttons,
+#colorPicker {
+  margin: 10px 0;
 }
 
 .colorBtn {
@@ -16,8 +20,9 @@
   height: 40px;
   border: none;
   cursor: pointer;
-  margin: 5px;
-  border-radius: 20px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
 }
 
 #cssOutput {
@@ -25,4 +30,8 @@
   background-color: #f0f0f0;
   border: 1px solid #ddd;
   padding: 10px;
+}
+
+button#reset {
+  margin-left: 30px;
 }
