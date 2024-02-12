@@ -121,7 +121,7 @@ function updateCSSOutput() {
   if (gradients.length === 0) {
     cssOutput.textContent = "";
   } else {
-    cssOutput.textContent = `#canvas {\n  background:\n    ${gradients.join(",\n    ")};\n}`;
+    cssOutput.textContent = `.fancy {\n  background:\n    ${gradients.join(",\n    ")};\n}`;
   }
 }
 
