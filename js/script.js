@@ -92,7 +92,7 @@ function updateCSSOutput() {
   if (gradients.length === 0) {
     cssOutput.textContent = "";
   } else {
-    cssOutput.textContent = `#canvas {\n  background-image:\n    ${gradients.join(",\n    ")};\n}`;
+    cssOutput.textContent = `#canvas {\n  background:\n    ${gradients.join(",\n    ")};\n}`;
   }
 }
 
